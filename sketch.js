@@ -181,7 +181,7 @@ function draw() {
   var modDepth = map(mouseY, 0, -200, modMinDepth, modMaxDepth); //84
   modulator.amp(modDepth);
   //println(modDepth);
-  image(img, 0, 0, img.width / 2, img.height / 2);
+  //image(img, 0, 0, img.width / 2, img.height / 2);
 
   if (mouseIsPressed == true) {
     carrier.amp(1.0, 0.01);
