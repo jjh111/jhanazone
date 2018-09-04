@@ -5,6 +5,10 @@ html, body {
 # frontalone {
   position: relative;
   display: inline;
+  bottom: 1px;
+    right: 1px;
+    width: auto;
+    height: auto;
   }
 
 }
