@@ -196,7 +196,7 @@ function draw() {
     drawCircle();
     explosion(); //calling the retro looking explosion circles
     tracker(); //twinkles
-    image(img, 0, 0, img.width / 2, img.height / 2);
+    //image(img, 0, 0, img.width / 2, img.height / 2);
     fill(255, invAlpha - 10);
 
     ellipse(mouseX, mouseY, 10, 10);
