@@ -1,11 +1,10 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: available;
-  height: available;
+
 
 #container{
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
 }
@@ -17,7 +16,7 @@ html, body {
   position: absolute;
   bottom: 0px;
     right: 40%;
-    width: available;
+    width: 100%;
     height: auto;
   }
 
