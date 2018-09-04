@@ -13,9 +13,9 @@ html, body {
     }
 #frontalone{
   position: absolute;
-  bottom: 1px;
-    right: 1px;
-    width: 50%;
+  bottom: 0px;
+    right: 40%;
+    width: available;
     height: auto;
   }
 
