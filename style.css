@@ -4,7 +4,7 @@ html, body {
 
 # frontalone {
   position: relative;
-  display: inline;
+  display: absolute;
   bottom: 1px;
     right: 1px;
     width: 50%;
