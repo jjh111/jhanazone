@@ -70,7 +70,7 @@ function setup() {
 cnv = createCanvas(windowWidth, windowHeight);
   //noCursor();
 	cursor(CROSS, [1], [1])
-  img = loadImage("/FSalone.png")
+  img = loadImage("assets/FSalone.png")
   fill(0);
   noStroke();
   rect(0, 0, width, height);
