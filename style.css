@@ -11,8 +11,8 @@
 #frontalone{
   position: absolute;
   bottom: 0px;
-    right: 40%;
-    width: auto;
+    right: 0%;
+    width: 50%;
     height: auto;
     z-index: 100;
     -webkit-user-drag: none;
