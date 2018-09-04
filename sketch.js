@@ -37,7 +37,7 @@ var env, env1, triOsc;
 var carrier; // this is the oscillator we will hear
 var modulator; // this oscillator will modulate the frequency of the carrier
 
-var analyzer; // we'll use this visualize the waveform 
+var analyzer; // we'll use this visualize the waveform
 
 // the carrier frequency pre-modulation
 var carrierBaseFreq = 220;
@@ -66,11 +66,11 @@ var trace = false; // are we tracing?
 function setup() {
   frameRate(24);
   //cnv = createCanvas(1500, 1000);
-	
+
 cnv = createCanvas(windowWidth, windowHeight);
   //noCursor();
 	cursor(CROSS, [1], [1])
-  img = loadImage("https://static1.squarespace.com/static/53850248e4b0995549fd8456/t/5b8ee80a6d2a73271c2d466c/1536092907225/FSalone.png?format=1500w")
+  img = loadImage("/FSalone.png")
   fill(0);
   noStroke();
   rect(0, 0, width, height);
@@ -86,12 +86,12 @@ cnv = createCanvas(windowWidth, windowHeight);
   triOsc.freq(triOscBaseFreq);
 
 
-  
+
 
   carrier = new p5.Oscillator('sine');
   carrier.amp(0); // set amplitude
   carrier.freq(carrierBaseFreq); // set frequency
-  
+
 
   // try changing the type to 'square', 'sine' or 'triangle'
   modulator = new p5.Oscillator('sine');
@@ -100,8 +100,8 @@ cnv = createCanvas(windowWidth, windowHeight);
   // add the modulator's output to modulate the carrier's frequency
   modulator.disconnect();
   carrier.freq(modulator);
-	
-	
+
+
 
   // create an FFT to analyze the audio
   analyzer = new p5.FFT();
@@ -111,23 +111,23 @@ cnv = createCanvas(windowWidth, windowHeight);
 
   for (var i = 0; i < sines.length; i++) {
     sines[i] = PI; // start EVERYBODY facing NORTH
-		
+
 		cnv.mousePressed(envAttack);
   }
 }
 
-function envAttack(){ 
-	env.triggerAttack();	
-	
+function envAttack(){
+	env.triggerAttack();
+
 	carrier.start(); // start oscillating
 	triOsc.start();
 	explosion(); //calling the retro looking explosion circles
-	
+
 }
 
 
 function mouseReleased() {
-  env.triggerRelease(); 
+  env.triggerRelease();
 	triOsc.stop();
 	carrier.stop();
 	//grow = 0;
@@ -141,7 +141,7 @@ function mouseReleased() {
   flash = 255;
   fill(255, random(235, 255));
   ellipse(mouseX, mouseY, grow, grow);
-	
+
 	//tesseract = new Tesseract();
 }
 
@@ -166,8 +166,8 @@ function draw() {
 
 //console.log(locY);
 	//console.log(triOscBaseFreq);
-	
-	
+
+
   // map mouseY to modulator freq between a maximum and minimum frequency
   var modFreq = map(mouseY, 200, 0, modMinFreq, modMaxFreq); //-9
 
@@ -177,7 +177,7 @@ function draw() {
 
   // change the amplitude of the modulator
   // negative amp reverses the sawtooth waveform, and sounds percussive
-  // 
+  //
   var modDepth = map(mouseY, 0, -200, modMinDepth, modMaxDepth); //84
   modulator.amp(modDepth);
   //println(modDepth);
@@ -205,12 +205,12 @@ function draw() {
 
       stroke(255); // black pen
       noFill(); // don't fill
-		
-			
-			/*	
+
+
+			/*
 	tesseract.display();
 			push();
-  
+
 
   if (mouseX < width/2) tesseract.turn(0, 1, .01);
   if (mouseY < height/2) tesseract.turn(0, 2, .01);
@@ -221,7 +221,7 @@ function draw() {
 	*/
 }
     }
-		
+
 /*
     // MAIN ACTION
     push(); // start a transformation matrix
@@ -262,44 +262,44 @@ function Tesseract {
     perspW=1;
 
     float[][][] temp={
-      {{1, 1, 1, 1}, {-1, 1, 1, 1}}, 
-      {{1, 1, 1, 1}, { 1, -1, 1, 1}}, 
-      {{1, 1, 1, 1}, { 1, 1, -1, 1}}, 
-      {{1, 1, 1, 1}, { 1, 1, 1, -1}}, 
+      {{1, 1, 1, 1}, {-1, 1, 1, 1}},
+      {{1, 1, 1, 1}, { 1, -1, 1, 1}},
+      {{1, 1, 1, 1}, { 1, 1, -1, 1}},
+      {{1, 1, 1, 1}, { 1, 1, 1, -1}},
 
-      {{-1, -1, 1, 1}, { 1, -1, 1, 1}}, 
-      {{-1, -1, 1, 1}, {-1, 1, 1, 1}}, 
-      {{-1, -1, 1, 1}, {-1, -1, -1, 1}}, 
-      {{-1, -1, 1, 1}, {-1, -1, 1, -1}}, 
+      {{-1, -1, 1, 1}, { 1, -1, 1, 1}},
+      {{-1, -1, 1, 1}, {-1, 1, 1, 1}},
+      {{-1, -1, 1, 1}, {-1, -1, -1, 1}},
+      {{-1, -1, 1, 1}, {-1, -1, 1, -1}},
 
-      {{-1, 1, -1, 1}, { 1, 1, -1, 1}}, 
-      {{-1, 1, -1, 1}, {-1, -1, -1, 1}}, 
-      {{-1, 1, -1, 1}, {-1, 1, 1, 1}}, 
-      {{-1, 1, -1, 1}, {-1, 1, -1, -1}}, 
+      {{-1, 1, -1, 1}, { 1, 1, -1, 1}},
+      {{-1, 1, -1, 1}, {-1, -1, -1, 1}},
+      {{-1, 1, -1, 1}, {-1, 1, 1, 1}},
+      {{-1, 1, -1, 1}, {-1, 1, -1, -1}},
 
-      {{-1, 1, 1, -1}, { 1, 1, 1, -1}}, 
-      {{-1, 1, 1, -1}, {-1, -1, 1, -1}}, 
-      {{-1, 1, 1, -1}, {-1, 1, -1, -1}}, 
-      {{-1, 1, 1, -1}, {-1, 1, 1, 1}}, 
+      {{-1, 1, 1, -1}, { 1, 1, 1, -1}},
+      {{-1, 1, 1, -1}, {-1, -1, 1, -1}},
+      {{-1, 1, 1, -1}, {-1, 1, -1, -1}},
+      {{-1, 1, 1, -1}, {-1, 1, 1, 1}},
 
-      {{1, -1, -1, 1}, {-1, -1, -1, 1}}, 
-      {{1, -1, -1, 1}, { 1, 1, -1, 1}}, 
-      {{1, -1, -1, 1}, { 1, -1, 1, 1}}, 
-      {{1, -1, -1, 1}, { 1, -1, -1, -1}}, 
+      {{1, -1, -1, 1}, {-1, -1, -1, 1}},
+      {{1, -1, -1, 1}, { 1, 1, -1, 1}},
+      {{1, -1, -1, 1}, { 1, -1, 1, 1}},
+      {{1, -1, -1, 1}, { 1, -1, -1, -1}},
 
-      {{1, -1, 1, -1}, {-1, -1, 1, -1}}, 
-      {{1, -1, 1, -1}, { 1, 1, 1, -1}}, 
-      {{1, -1, 1, -1}, { 1, -1, -1, -1}}, 
-      {{1, -1, 1, -1}, { 1, -1, 1, 1}}, 
+      {{1, -1, 1, -1}, {-1, -1, 1, -1}},
+      {{1, -1, 1, -1}, { 1, 1, 1, -1}},
+      {{1, -1, 1, -1}, { 1, -1, -1, -1}},
+      {{1, -1, 1, -1}, { 1, -1, 1, 1}},
 
-      {{1, 1, -1, -1}, {-1, 1, -1, -1}}, 
-      {{1, 1, -1, -1}, { 1, -1, -1, -1}}, 
-      {{1, 1, -1, -1}, { 1, 1, 1, -1}}, 
-      {{1, 1, -1, -1}, { 1, 1, -1, 1}}, 
+      {{1, 1, -1, -1}, {-1, 1, -1, -1}},
+      {{1, 1, -1, -1}, { 1, -1, -1, -1}},
+      {{1, 1, -1, -1}, { 1, 1, 1, -1}},
+      {{1, 1, -1, -1}, { 1, 1, -1, 1}},
 
-      {{-1, -1, -1, -1}, { 1, -1, -1, -1}}, 
-      {{-1, -1, -1, -1}, {-1, 1, -1, -1}}, 
-      {{-1, -1, -1, -1}, {-1, -1, 1, -1}}, 
+      {{-1, -1, -1, -1}, { 1, -1, -1, -1}},
+      {{-1, -1, -1, -1}, {-1, 1, -1, -1}},
+      {{-1, -1, -1, -1}, {-1, -1, 1, -1}},
       {{-1, -1, -1, -1}, {-1, -1, -1, 1}}};
 
     lines=temp;
@@ -320,7 +320,7 @@ function Tesseract {
 
 //drawing explosion
 function drawCircle() {
-  //translate(width/2, height/3); //centers explosion 
+  //translate(width/2, height/3); //centers explosion
   fill(255, flash);
   ellipse(mouseX, mouseY, grow, grow);
 }
