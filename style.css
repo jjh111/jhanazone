@@ -2,13 +2,9 @@ html, body {
   margin: 0;
   padding: 0;
 
-  div {
+# frontalone {
   position: relative;
   display: inline;
-}
-.imtip {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
+  }
+
 }
