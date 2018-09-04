@@ -2,16 +2,16 @@ html, body {
   margin: 0;
   padding: 0;
 
-  #container{
+#container{
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: available;
+    height: available;
 }
-  # sky {
+  #sky{
     width: auto;
    height: auto;
     }
-# frontalone {
+#frontalone{
   position: absolute;
   bottom: 1px;
     right: 1px;
