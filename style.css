@@ -6,6 +6,7 @@
   #sky{
     width: auto;
    height: auto;
+   z-index: 10;
     }
 #frontalone{
   position: absolute;
@@ -13,4 +14,5 @@
     right: 40%;
     width: 100%;
     height: auto;
+    z-index: 100;
   }
