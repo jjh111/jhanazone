@@ -88,10 +88,7 @@ img = loadImage("/assets/FSalone.png");
   env.setADSR(attackTime, decayTime, susPercent, releaseTime);
   env.setRange(attackLevel, releaseLevel);
 
-  triOsc = new p5.Oscillator('triangle');
-  triOsc.amp(env-alphaVal);
 
-  triOsc.freq(triOscBaseFreq);
 
 
 
@@ -145,7 +142,7 @@ function cutout(){image(img, 0, height, img.width, img.height);
 
 function mouseReleased() {
   env.triggerRelease();
-	triOsc.stop();
+
 	carrier.stop();
 	//grow = 0;
 	  carrier.amp(0.0, 0.002);
