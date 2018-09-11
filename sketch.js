@@ -120,6 +120,7 @@ img = loadImage("/assets/FSalone.png");
 function touchStarted() {
   if (value === 0) {
     song.play();
+    song.setVolume(1);
   } else {
     song.stop();
   }
@@ -160,7 +161,7 @@ function mouseReleased() {
 
 function draw() {
   fill(255);
-song.setVolume(1);
+
     for (var i = 0; i < windowWidth*2; i++) {
       noStroke();
       ellipse(xPos[i], yPos[i], s[i], s[i]);
