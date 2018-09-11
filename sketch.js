@@ -184,7 +184,7 @@ function draw() {
   //image(img, 0, 0, img.width / 2, img.height / 2);
 
   if (mouseIsPressed == true) {
-    carrier.amp(1.0, 0.01);
+
     grow = pow(pass++, 6);
     for (var i = 0; i < 25; i = i + 1); {
       alphaVal = alphaVal - 1;
