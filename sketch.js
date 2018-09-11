@@ -23,10 +23,8 @@ var p = 10;
 var value = 0;
 var sky = 30;
 var mouseIsPressed = false;
-
 var attackLevel = 2.0;
 var releaseLevel = 0;
-
 var attackTime = 0.001
 var decayTime = 0.3;
 var susPercent = 0.2;
@@ -93,7 +91,7 @@ img = loadImage("/assets/FSalone.png");
   triOsc = new p5.Oscillator('triangle');
   triOsc.amp(env-alphaVal);
 
-  triOsc.freq(triOscBaseFreq-invAlpha);
+  triOsc.freq(triOscBaseFreq);
 
 
 
