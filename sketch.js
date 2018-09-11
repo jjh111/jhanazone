@@ -89,10 +89,6 @@ img = loadImage("/assets/FSalone.png");
   env.setRange(attackLevel, releaseLevel);
 
 
-
-
-
-
   carrier = new p5.Oscillator('sine');
   carrier.amp(0); // set amplitude
   carrier.freq(carrierBaseFreq); // set frequency
@@ -164,7 +160,7 @@ function mouseReleased() {
 
 function draw() {
   fill(255);
-song.setVolume(0.1);
+song.setVolume(1);
     for (var i = 0; i < windowWidth*2; i++) {
       noStroke();
       ellipse(xPos[i], yPos[i], s[i], s[i]);
