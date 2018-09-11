@@ -72,7 +72,8 @@ function setup() {
 
   //cnv = createCanvas(1500, 1000);
 
-
+  soundFormats('mp3', 'ogg');
+    song = loadSound('assets/27568__suonho__memorymoon-space-blaster-plays.mp3');
 cnv = createCanvas(windowWidth-20, windowHeight-20);
 font = loadFont('assets/AvenirNext-Bold.ttf');
 
@@ -90,9 +91,9 @@ img = loadImage("/assets/FSalone.png");
   env.setRange(attackLevel, releaseLevel);
 
   triOsc = new p5.Oscillator('triangle');
-  triOsc.amp(env);
-  triOsc.start();
-  triOsc.freq(triOscBaseFreq);
+  triOsc.amp(env-alphaVal);
+
+  triOsc.freq(triOscBaseFreq-invAlpha);
 
 
 
@@ -125,11 +126,19 @@ img = loadImage("/assets/FSalone.png");
   }
 }
 
-function envAttack(){
-	env.triggerAttack();
+function touchStarted() {
+  if (value === 0) {
+    song.play();
+  } else {
+    song.stop();
+  }
+}
 
-	carrier.start(); // start oscillating
-	triOsc.start();
+
+function envAttack(){
+
+  env.triggerAttack();
+  carrier.start(); // start oscillating
 	explosion(); //calling the retro looking explosion circles
 
 }
@@ -160,7 +169,7 @@ function mouseReleased() {
 
 function draw() {
   fill(255);
-
+song.setVolume(0.1);
     for (var i = 0; i < windowWidth*2; i++) {
       noStroke();
       ellipse(xPos[i], yPos[i], s[i], s[i]);
@@ -220,6 +229,7 @@ function draw() {
 
   if (mouseIsPressed == true) {
 
+    carrier.amp(1.0, 0.01);
     grow = pow(pass++, 6);
     for (var i = 0; i < 25; i = i + 1); {
       alphaVal = alphaVal - 1;
