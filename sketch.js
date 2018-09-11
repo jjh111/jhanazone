@@ -50,6 +50,7 @@ var modMaxDepth = 150;
 var modMinDepth = 20;
 
 
+
 var NUMSINES = 20; // how many of these things can we do at once?
 var sines = new Array(NUMSINES); // an array to hold all the current angles
 var rad; // an initial radius value for the central sine
@@ -63,15 +64,22 @@ var alpha = 50; // how opaque is the tracing system
 var trace = false; // are we tracing?
 
 
+
 function setup() {
   frameRate(24);
-  img = loadImage("/FSalone.png");
+
+  //extFont(font);
+
   //cnv = createCanvas(1500, 1000);
 
-cnv = createCanvas(windowWidth, windowHeight);
-  //noCursor();
-	cursor(CROSS, [1], [1])
-  //img = loadImage("assets/FSalone.png")
+
+cnv = createCanvas(windowWidth-20, windowHeight-20);
+font = loadFont('assets/AvenirNext-Bold.ttf');
+
+
+img = loadImage("/assets/FSalone.png");
+  noCursor();
+	//cursor(CROSS, [1], [1])
   fill(0);
   noStroke();
   rect(0, 0, width, height);
@@ -125,7 +133,8 @@ function envAttack(){
 	explosion(); //calling the retro looking explosion circles
 
 }
-
+function cutout(){image(img, 0, height, img.width, img.height);
+}
 
 function mouseReleased() {
   env.triggerRelease();
@@ -143,6 +152,7 @@ function mouseReleased() {
   fill(255, random(235, 255));
   ellipse(mouseX, mouseY, grow, grow);
 
+
 	//tesseract = new Tesseract();
 }
 
@@ -150,22 +160,23 @@ function mouseReleased() {
 
 function draw() {
   fill(255);
-  for (var i = 0; i < 3000; i++) {
-    noStroke();
-    ellipse(xPos[i], yPos[i], s[i], s[i]);
+
+    for (var i = 0; i < windowWidth*2; i++) {
+      noStroke();
+      ellipse(xPos[i], yPos[i], s[i], s[i]);
   }
   fill(0, sky);
   noStroke();
   rect(0, 0, width, height);
-  fill(110, 14, 105, 45);
+
+
+  fill(110, 14, 105, 5);
   noStroke();
   rect(0, 0, width, height);
 
 
   var locY = (mouseY / height - 0.5) * (-2);
   var locX = (mouseX / width - 0.5) * 2;
-
-  image(img, 0, height/2, img.width/2, img.height/2);
 
 //console.log(locY);
 	//console.log(triOscBaseFreq);
@@ -186,6 +197,27 @@ function draw() {
   //println(modDepth);
   //image(img, 0, 0, img.width / 2, img.height / 2);
 
+
+
+
+  function drawWords(x) {
+  // The text() function needs three parameters:
+  // the text to draw, the horizontal position,
+  // and the vertical position
+  fill(0);
+  text("ichi", x, 80);
+
+  fill(65);
+  text("ni", x, 150);
+
+  fill(190);
+  text("san", x, 220);
+
+  fill(255);
+  text("shi", x, 290);
+  }
+
+
   if (mouseIsPressed == true) {
     carrier.amp(1.0, 0.01);
     grow = pow(pass++, 6);
@@ -203,6 +235,8 @@ function draw() {
     fill(255, invAlpha - 10);
 
     ellipse(mouseX, mouseY, 10, 10);
+
+
 
     if (!trace) {
 
@@ -222,8 +256,10 @@ function draw() {
   if (mouseY > height/2) tesseract.turn(1, 3, .01);
   if (mouseX == width/2) tesseract.turn(2, 3, .01);
 	*/
+
 }
     }
+
 
 /*
     // MAIN ACTION
@@ -328,6 +364,10 @@ function drawCircle() {
   ellipse(mouseX, mouseY, grow, grow);
 }
 
+
+
+
+
 function explosion() {
 
   stroke(244, 233, 202, alphaVal - 100);
@@ -360,6 +400,8 @@ function starpoints() {
   for (var i = 0; i < 2500; i++) {
     s[i] = random(0, 5);
   }
+
+
 }
 
 //draws twinkles
