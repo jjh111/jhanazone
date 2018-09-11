@@ -65,6 +65,7 @@ var trace = false; // are we tracing?
 
 function setup() {
   frameRate(24);
+  img = loadImage("/FSalone.png");
   //cnv = createCanvas(1500, 1000);
 
 cnv = createCanvas(windowWidth, windowHeight);
@@ -163,6 +164,8 @@ function draw() {
 
   var locY = (mouseY / height - 0.5) * (-2);
   var locX = (mouseX / width - 0.5) * 2;
+
+  image(img, 0, height/2, img.width/2, img.height/2);
 
 //console.log(locY);
 	//console.log(triOscBaseFreq);
