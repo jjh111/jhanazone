@@ -64,7 +64,7 @@ var trace = false; // are we tracing?
 
 
 function setup() {
-  frameRate(24);
+  //frameRate(24);
 
   //extFont(font);
 
