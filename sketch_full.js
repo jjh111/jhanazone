@@ -23,7 +23,29 @@ var p = 10;
 var value = 0;
 var sky = 30;
 var mouseIsPressed = false;
+var attackLevel = 2.0;
+var releaseLevel = 0;
+var attackTime = 0.001
+var decayTime = 0.3;
+var susPercent = 0.2;
+var releaseTime = 0.5;
 
+var env, env1, triOsc;
+
+var carrier; // this is the oscillator we will hear
+var modulator; // this oscillator will modulate the frequency of the carrier
+
+var analyzer; // we'll use this visualize the waveform
+
+// the carrier frequency pre-modulation
+var carrierBaseFreq = 220;
+var triOscBaseFreq = 1000;
+
+// min/max ranges for modulator
+var modMaxFreq = 0;
+var modMinFreq = -20;
+var modMaxDepth = 150;
+var modMinDepth = 20;
 
 
 
@@ -48,11 +70,13 @@ function setup() {
 
   //cnv = createCanvas(1500, 1000);
 
+  soundFormats('mp3', 'ogg');
+    song = loadSound('assets/27568__suonho__memorymoon-space-blaster-plays.mp3');
 cnv = createCanvas(windowWidth-20, windowHeight-20);
 font = loadFont('assets/AvenirNext-Bold.ttf');
 
 
-
+img = loadImage("/assets/FSalone.png");
   noCursor();
 	//cursor(CROSS, [1], [1])
   fill(0);
@@ -60,6 +84,28 @@ font = loadFont('assets/AvenirNext-Bold.ttf');
   rect(0, 0, width, height);
   starpoints(); //drawing star points
 
+  env = new p5.Envelope();
+  env.setADSR(attackTime, decayTime, susPercent, releaseTime);
+  env.setRange(attackLevel, releaseLevel);
+
+
+  carrier = new p5.Oscillator('sine');
+  carrier.amp(0); // set amplitude
+  carrier.freq(carrierBaseFreq); // set frequency
+
+
+  // try changing the type to 'square', 'sine' or 'triangle'
+  modulator = new p5.Oscillator('sine');
+  modulator.start();
+
+  // add the modulator's output to modulate the carrier's frequency
+  modulator.disconnect();
+  carrier.freq(modulator);
+
+
+
+  // create an FFT to analyze the audio
+  analyzer = new p5.FFT();
 
   rad = height / 4; // compute radius for central circle
 
@@ -71,11 +117,20 @@ font = loadFont('assets/AvenirNext-Bold.ttf');
   }
 }
 
-
+function touchStarted() {
+  if (value === 0) {
+    song.play();
+    song.setVolume(1);
+  } else {
+    song.stop();
+  }
+}
 
 
 function envAttack(){
 
+  env.triggerAttack();
+  carrier.start(); // start oscillating
 	explosion(); //calling the retro looking explosion circles
 
 }
@@ -83,7 +138,11 @@ function cutout(){image(img, 0, height, img.width, img.height);
 }
 
 function mouseReleased() {
+  env.triggerRelease();
 
+	carrier.stop();
+	//grow = 0;
+	  carrier.amp(0.0, 0.002);
   radius = 0.01; //reset explosion for next mousepressed event
   alphaVal = 255;
   invAlpha = 0;
@@ -124,6 +183,20 @@ function draw() {
 	//console.log(triOscBaseFreq);
 
 
+  // map mouseY to modulator freq between a maximum and minimum frequency
+  var modFreq = map(mouseY, 200, 0, modMinFreq, modMaxFreq); //-9
+
+	modulator.freq(modFreq);
+//console.log(modFreq);
+  //println(modFreq);
+
+  // change the amplitude of the modulator
+  // negative amp reverses the sawtooth waveform, and sounds percussive
+  //
+  var modDepth = map(mouseY, 0, -200, modMinDepth, modMaxDepth); //84
+  modulator.amp(modDepth);
+  //println(modDepth);
+  //image(img, 0, 0, img.width / 2, img.height / 2);
 
 
 
@@ -148,14 +221,15 @@ function draw() {
 
   if (mouseIsPressed == true) {
 
+    carrier.amp(1.0, 0.01);
     grow = pow(pass++, 6);
     for (var i = 0; i < 25; i = i + 1); {
       alphaVal = alphaVal - 1;
       invAlpha = invAlpha + 1;
       flash = flash - 70;
       sky = sky - 1;
+			triOscBaseFreq = triOscBaseFreq -200;
     }
-
     drawCircle();
     explosion(); //calling the retro looking explosion circles
     tracker(); //twinkles
@@ -171,6 +245,19 @@ function draw() {
       stroke(255); // black pen
       noFill(); // don't fill
 
+
+			/*
+	tesseract.display();
+			push();
+
+
+  if (mouseX < width/2) tesseract.turn(0, 1, .01);
+  if (mouseY < height/2) tesseract.turn(0, 2, .01);
+  if (mouseY == height/2 ) tesseract.turn(1, 2, .01);
+  if (mouseX > width/2) tesseract.turn(0, 3, .01);
+  if (mouseY > height/2) tesseract.turn(1, 3, .01);
+  if (mouseX == width/2) tesseract.turn(2, 3, .01);
+	*/
 
 }
     }

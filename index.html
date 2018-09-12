@@ -2,16 +2,25 @@
     <script src="p5.min.js"></script>
     <script src="p5.dom.min.js"></script>
     <script src="p5.sound.min.js"></script>
+    <script src="prismatic.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
 
   </head>
-  <body>
-<div id="container">
-    <div id="sky"><script src="sketch.js"></script>
+  <div id="container">
+      <div id="sky"><script src="sketch_full.js"></script>
+      </div>
+
+
     </div>
-
-
-  </div>
+  <body>
+    <ml-model
+    id="Balloon"
+    src="DIAMOND.fbx"
+    style="width: 300px; height: 300px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);"
+    z-offset="200px"
+    extractable="true"
+    extracted-scale="3">
+  </ml-model>
 
 </body></html>
