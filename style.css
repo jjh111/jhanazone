@@ -1,0 +1,12 @@
+.sig {
+  position: fixed;
+  height: auto;
+  width: calc(55% - 33vw);
+  bottom: 0%;
+  right: 2%;
+  z-index: 5;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.3vw;
+  text-align: center;
+  color: white;
+}
