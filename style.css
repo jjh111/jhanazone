@@ -6,6 +6,10 @@ body {
 
 }
 
+a {
+color: #FFFFFF;
+}
+
 .container {
     position: fixed;
     height:100vh;
