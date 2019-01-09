@@ -53,33 +53,13 @@
     "buffers" : [
         {
             "byteLength" : 69408,
-            "uri" : "GoldenMerkaba.bin"
-        }
-    ],
-    "cameras" : [
-        {
-            "name" : "Camera",
-            "perspective" : {
-                "yfov" : 0.39959648408210363,
-                "zfar" : 100,
-                "znear" : 0.10000000149011612
-            },
-            "type" : "perspective"
+            "uri" : "untitled.bin"
         }
     ],
     "extensions" : {},
     "materials" : [
         {
-            "pbrMetallicRoughness" : {
-                "baseColorFactor" : [
-                    0.09655462950468063,
-                    0.0704348012804985,
-                    0.0022797645069658756,
-                    1
-                ],
-                "metallicFactor" : 1,
-                "roughnessFactor" : 0.712389349937439
-            }
+            "pbrMetallicRoughness" : {}
         }
     ],
     "meshes" : [
@@ -98,40 +78,6 @@
         }
     ],
     "nodes" : [
-        {
-            "name" : "Light",
-            "rotation" : [
-                0.16907575726509094,
-                0.7558802962303162,
-                -0.27217137813568115,
-                0.570947527885437
-            ],
-            "scale" : [
-                1,
-                1,
-                0.9999999403953552
-            ],
-            "translation" : [
-                4.076245307922363,
-                5.903861999511719,
-                -1.0054539442062378
-            ]
-        },
-        {
-            "camera" : 0,
-            "name" : "Camera",
-            "rotation" : [
-                0.483536034822464,
-                0.33687159419059753,
-                -0.20870360732078552,
-                0.7804827094078064
-            ],
-            "translation" : [
-                7.358891487121582,
-                4.958309173583984,
-                6.925790786743164
-            ]
-        },
         {
             "mesh" : 0,
             "name" : "Solid",
@@ -152,9 +98,7 @@
         {
             "name" : "Scene",
             "nodes" : [
-                0,
-                1,
-                2
+                0
             ]
         }
     ]
