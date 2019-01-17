@@ -15,6 +15,10 @@ color: #FFFFFF;
     height:100vh;
     width:100vw;
 }
+.Merkaba3D {
+  width: 33%;
+  height: 33%;
+}
 .sig {
   position: fixed;
   height: auto;
