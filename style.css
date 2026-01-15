@@ -21,15 +21,29 @@ color: #FFFFFF;
 
 .sig {
   position: fixed;
-  height: auto;
-  width: calc(55% - 33vw);
-  bottom: 0%;
+  bottom: 2%;
   right: 2%;
-  z-index: 5;
+  z-index: 1001;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 1.3vw;
-  text-align: center;
+  text-align: right;
   color: white;
+  opacity: 0.5;
+}
+
+.sig p {
+  margin: 0;
+  padding: 0;
+}
+
+.sig a {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sig img {
+  width: 50%;
+  height: auto;
+  max-width: 200px;
 }
 .sky{
   position:fixed;
@@ -44,4 +58,14 @@ width: 100vw;
 img {
   max-width: 100%;
     max-height: 100%;
+}
+
+#hills2d {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+    pointer-events: none;
 }
