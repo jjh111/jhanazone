@@ -48,7 +48,7 @@ function setup() {
 
   //cnv = createCanvas(1500, 1000);
 
-cnv = createCanvas(windowWidth-20, windowHeight-20);
+cnv = createCanvas(windowWidth, windowHeight);
 font = loadFont('assets/AvenirNext-Bold.ttf');
 
 

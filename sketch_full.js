@@ -72,7 +72,7 @@ function setup() {
 
   soundFormats('mp3', 'ogg');
     song = loadSound('assets/27568__suonho__memorymoon-space-blaster-plays.mp3');
-cnv = createCanvas(windowWidth-20, windowHeight-20);
+cnv = createCanvas(windowWidth, windowHeight);
 font = loadFont('assets/AvenirNext-Bold.ttf');
 
 
