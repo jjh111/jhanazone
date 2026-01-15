@@ -2,7 +2,8 @@
 body {
     height: 100vh;
     margin: 0;
-    overflow-x: hidden;
+    padding: 0;
+    overflow: hidden;
 
 }
 
@@ -10,10 +11,12 @@ a {
 color: #FFFFFF;
 }
 
-.container {
+#container {
     position: fixed;
     height:100vh;
     width:100vw;
+    top: 0;
+    left: 0;
 }
 
 .sig {
@@ -31,7 +34,7 @@ color: #FFFFFF;
 .sky{
   position:fixed;
 width: 100vw;
-height: 100vw;
+  height: 100vh;
   left:0;
   right:0;
   z-index: 0;
