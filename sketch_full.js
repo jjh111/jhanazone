@@ -4,7 +4,6 @@
  For class: Expressive Computation, taught by Garrison LeMasters
  */
 
-var img; //front cutout of person standing
 var radius = 0;
 var grow = 0;
 var alphaVal = 255;
@@ -76,8 +75,7 @@ cnv = createCanvas(windowWidth, windowHeight);
 font = loadFont('assets/AvenirNext-Bold.ttf');
 
 
-img = loadImage("/assets/FSalone.png");
-  noCursor();
+  cursor();
 	//cursor(CROSS, [1], [1])
   fill(0);
   noStroke();
@@ -87,15 +85,18 @@ img = loadImage("/assets/FSalone.png");
   env = new p5.Envelope();
   env.setADSR(attackTime, decayTime, susPercent, releaseTime);
   env.setRange(attackLevel, releaseLevel);
+  env.connect(carrier.amp);
 
 
   carrier = new p5.Oscillator('sine');
   carrier.amp(0); // set amplitude
   carrier.freq(carrierBaseFreq); // set frequency
+  carrier.connect(p5.soundOut);
 
 
   // try changing the type to 'square', 'sine' or 'triangle'
   modulator = new p5.Oscillator('sine');
+  modulator.connect(p5.soundOut);
   modulator.start();
 
   // add the modulator's output to modulate the carrier's frequency
@@ -128,21 +129,23 @@ function touchStarted() {
 
 
 function envAttack(){
-
+  noCursor();
   env.triggerAttack();
-  carrier.start(); // start oscillating
+  if (carrier) {
+  	carrier.start(); // start oscillating
+  }
 	explosion(); //calling the retro looking explosion circles
 
 }
-function cutout(){image(img, 0, height, img.width, img.height);
-}
 
 function mouseReleased() {
+  cursor();
   env.triggerRelease();
 
-	carrier.stop();
-	//grow = 0;
-	  carrier.amp(0.0, 0.002);
+	if (carrier) {
+		carrier.stop();
+		carrier.amp(0.0, 0.002);
+	}
   radius = 0.01; //reset explosion for next mousepressed event
   alphaVal = 255;
   invAlpha = 0;

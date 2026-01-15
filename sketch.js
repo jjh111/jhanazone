@@ -4,7 +4,6 @@
  For class: Expressive Computation, taught by Garrison LeMasters
  */
 
-var img; //front cutout of person standing
 var radius = 0;
 var grow = 0;
 var alphaVal = 255;
@@ -78,8 +77,6 @@ function envAttack(){
 
 	explosion(); //calling the retro looking explosion circles
 
-}
-function cutout(){image(img, 0, height, img.width, img.height);
 }
 
 function mouseReleased() {
