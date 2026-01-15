@@ -91,7 +91,7 @@ font = loadFont('assets/AvenirNext-Bold.ttf');
   carrier.amp(0); // set amplitude
   carrier.freq(carrierBaseFreq); // set frequency
   carrier.connect(p5.soundOut);
-  env.connect(carrier.amp);
+  env.connect(carrier);
 
 
   // try changing the type to 'square', 'sine' or 'triangle'
