@@ -68,4 +68,30 @@ img {
     height: auto;
     z-index: 1000;
     pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#hills2d.hidden {
+    opacity: 0;
+}
+
+#toggleImage {
+    position: fixed;
+    bottom: 2%;
+    left: 2%;
+    z-index: 1002;
+    background-color: #222;
+    color: #555;
+    border: 1px solid #333;
+    padding: 4px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.7rem;
+    opacity: 0.3;
+}
+
+#toggleImage:hover {
+    background-color: #333;
+    opacity: 0.5;
 }

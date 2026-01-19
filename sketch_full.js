@@ -74,6 +74,11 @@ function setup() {
 cnv = createCanvas(windowWidth, windowHeight);
 font = loadFont('assets/AvenirNext-Bold.ttf');
 
+  var toggleButton = document.getElementById('toggleImage');
+  toggleButton.addEventListener('click', function() {
+    var hills2d = document.getElementById('hills2d');
+    hills2d.classList.toggle('hidden');
+  });
 
   cursor();
 	//cursor(CROSS, [1], [1])
